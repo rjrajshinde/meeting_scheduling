@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%include ../partials/_stylesheet.ejs%>
+        <title>Meeting Scheduling</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body ng-app="loginUserApp" ng-controller="loginUserAppCtrlr" id="bodylogin">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6 grid-margin">
+                <h2 id="loginheading">Meetings Scheduling App</h2>
+                <div class="card" id="loginform">
+                  <div class="card-body">
+                    <h4 class="card-title" id="loginhere">Log In here</h4>
+                    <form class="forms-sample">
+
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" ng-model="user.email" 
+                         class="form-control" placeholder="Enter your Email" required>
+                         <div ng-messages="form.email.$error" ng-if="form.email.$touched">
+                            <p class="error-text pl-2" ng-message="required">This field is required.</p>
+                            <p class="error-text pl-2" ng-message="email">Invalid email.</p>
+                        </div> 
+                      </div>
+
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" ng-model="user.password" 
+                         placeholder="Enter your Password" required>
+                         <div ng-messages="form.password.$error" ng-if="form.password.$touched">
+                            <p class="error-text pl-2" ng-message="required">This field is required.</p>
+                        </div>
+                      </div>
+                      
+                      <button class="btn btn-primary btn-user btn-block" ng-click="loginUser()">
+                        Login
+                    </button>
+                    </form>
+                  </div>
+                  <a href="/auth/register" class="text-center">Register Here</a>
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+    <%include ../partials/_js.ejs%>
+    <script src="/ng-apps/loginUser.js"> </script>
+</body>
+
+</html>

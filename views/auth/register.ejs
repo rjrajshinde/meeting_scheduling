@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%include ../partials/_stylesheet.ejs%>
+        <title>Meeting Scheduling</title>
+        <link rel="stylesheet" href="/css/register.css">
+</head>
+
+<body ng-app="registerUserApp" ng-controller="registerUserAppCtrlr" id="registerbody">
+
+    <div class="container">
+
+        <div class="col-md-10 grid-margin" id="formcol">
+            <div class="card" id="registerform">
+                <div class="card-body">
+                    <h4 class="card-title text-center" id="registerhere">Register Here</h4>
+
+                    <form class="forms-sample">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-3 col-form-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="name" name="name" ng-model="user.name"
+                                    ng-minlength="2" ng-maxlength="10" placeholder="Enter your Name" required>
+                                <div ng-messages="form.name.$error" ng-if="form.name.$touched">
+                                    <p class="error-text pl-2" ng-message="required">This field is required.</p>
+                                    <p class="error-text pl-2" ng-message="minlength">This field is too short.</p>
+                                    <p class="error-text pl-2" ng-message="maxlength">This field is too long.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" id="email" name="email" ng-model="user.email"
+                                    placeholder="Enter your Email" required>
+                                <div ng-messages="form.email.$error" ng-if="form.email.$touched">
+                                    <p class="error-text pl-2" ng-message="required">This field is required.</p>
+                                    <p class="error-text pl-2" ng-message="email">Invalid email.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="mobile" class="col-sm-3 col-form-label">Mobile</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="mobile" name="mobile" ng-model="user.mobile"
+                                    placeholder="Enter Your Mobile number" ng-pattern="/^[789]\d{9}$/" required>
+                                <div ng-messages="form.mobile.$error" ng-if="form.mobile.$touched">
+                                    <p class="error-text pl-2" ng-message="required">This field is required.</p>
+                                    <p class="error-text pl-2" ng-message="pattern">Invalid mobile number.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-3 col-form-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="password" name="password"
+                                    ng-model="user.password" placeholder="Enter the Password">
+                                <div ng-messages="form.password.$error" ng-if="form.password.$touched" required>
+                                    <p class="error-text pl-2" ng-message="required">This field is required.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" ng-click="registerUser()">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <%include ../partials/_js.ejs%>
+    <script src="/ng-apps/registerUser.js"></script>
+</body>
+
+</html>

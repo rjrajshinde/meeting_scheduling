@@ -1,0 +1,9 @@
+//App Exec Environment Configuration File
+
+//App Exec Mode Variable: [LOCAL, TEST, PROD]
+APP_EXEC_MODE = LOCAL
+
+//Database Connection URL
+DB_CONNECTION_URL_LOCAL = mongodb://127.0.0.1:27017/meeting_scheduling_local
+DB_CONNECTION_URL_TEST = mongodb://127.0.0.1:27017/meeting_scheduling_test
+DB_CONNECTION_URL_PROD = mongodb://127.0.0.1:27017/meeting_scheduling_prod

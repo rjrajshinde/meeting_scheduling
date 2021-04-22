@@ -1,0 +1,70 @@
+<script type="text/ng-template" id="meetingModal">
+  <div class="modal" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header" ng-class="{'bg-primary': newMeetings.mode == 'create', 'bg-warning': newMeetings.mode == 'edit'}">
+            <h4 class="modal-title text-white">{{ newMeetings.mode == 'create' ? 'Create'  : 'Edit' }} User</h4>
+            <!-- <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button> -->
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <form name="form">
+                  <div class="form-row">
+
+                      <div class="form-group col-6">
+                          <label>Host Name</label>
+                          <input type="text" class="form-control" name="hostName" id="hostName"ng-model="newMeetings.hostName" placeholder="Enter Your Last Name" required>
+                          <div ng-messages="form.hostName.$error" ng-if="form.hostName.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-6">
+                          <label>Participant Name</label>
+                          <input type="text" class="form-control" name="participantName" id="participantName" ng-model="newMeetings.participantName"placeholder="Enter Your participantName" required>
+                          <div ng-messages="form.participantName.$error" ng-if="form.participantName.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-6">
+                          <label>Start Time</label>
+                          <input type="text" class="form-control" name="startTime" id="startTime"
+                              ng-model="newMeetings.startTime" placeholder="Enter Your start Time" required>
+                          <div ng-messages="form.startTime.$error" ng-if="form.startTime.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-6">
+                          <label>End Time</label>
+                          <input type="text" class="form-control" name="endTime" id="endTime"
+                              ng-model="newMeetings.endTime" placeholder="Enter Your end Time" required>
+                          <div ng-messages="form.endTime.$error" ng-if="form.endTime.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button class="btn btn-success pt-2" ng-click="create()" ng-if="newMeetings.mode != 'edit'"
+              ng-disabled="!form.$valid"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-warning pt-3" ng-click="edit()" ng-if="newMeetings.mode == 'edit'"
+              ng-disabled="!form.$valid"><i class="icon-plus"></i> Edit</button>
+            <button type="button" class="btn btn-danger" ng-click="close()">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</script>

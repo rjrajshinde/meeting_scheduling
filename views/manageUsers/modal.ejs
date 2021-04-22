@@ -1,0 +1,74 @@
+<script type="text/ng-template" id="userModal">
+  <div class="modal" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header" ng-class="{'bg-primary': newUser.mode == 'create', 'bg-warning': newUser.mode == 'edit'}">
+            <h4 class="modal-title text-white">{{ newUser.mode == 'create' ? 'Create'  : 'Edit' }} User</h4>
+            <!-- <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button> -->
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <form name="form">
+                  <div class="form-row">
+                      <div class="form-group col-6">
+                          <label>First Name</label>
+                          <input type="text" class="form-control" name="firstName" id="firstName"
+                              ng-model="newUser.firstName" placeholder="Enter Your Name" ng-minlength="1"ng-maxlength="10" required>
+                          <div ng-messages="form.firstName.$error" ng-if="form.firstName.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                              <div class="text-danger" ng-message="minlength">First Name At Least 1 Chars Long.</div>
+                              <div class="text-danger" ng-message="maxlength">First Name At Max 10 Chars Long.</div>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-6">
+                          <label>Last Name</label>
+                          <input type="text" class="form-control" name="lastName" id="lastName"ng-model="newUser.lastName" placeholder="Enter Your Last Name" required>
+                          <div ng-messages="form.lastName.$error" ng-if="form.lastName.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-6">
+                          <label>Email</label>
+                          <input type="email" class="form-control" name="email" id="email" ng-model="newUser.email"placeholder="Enter Your Email" required>
+                          <div ng-messages="form.email.$error" ng-if="form.email.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                              <div class="text-danger" ng-message="email">Please enter valid email.</div>
+                          </div>
+                      </div>
+
+                      <div class="form-group col-6">
+                          <label>Contact</label>
+                          <input type="text" class="form-control" name="contact" id="contact"
+                              ng-model="newUser.contact" placeholder="Enter Your Contact" ng-pattern="/^[6-9]\d{9}$/"
+                              required>
+                          <div ng-messages="form.contact.$error" ng-if="form.contact.$touched" role="alert">
+                              <div class="text-danger" ng-message="required">Please enter a value for this field.
+                              </div>
+                              <div class="text-danger" ng-message="pattern">Please enter valid contact.</div>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button class="btn btn-success pt-2" ng-click="create()" ng-if="newUser.mode != 'edit'"
+              ng-disabled="!form.$valid"><i class="icon-plus"></i> Add</button>
+          <button class="btn btn-warning pt-3" ng-click="edit()" ng-if="newUser.mode == 'edit'"
+              ng-disabled="!form.$valid"><i class="icon-plus"></i> Edit</button>
+            <button type="button" class="btn btn-danger" ng-click="close()">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</script>

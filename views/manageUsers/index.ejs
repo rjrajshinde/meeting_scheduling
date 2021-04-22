@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Meeting Scheduling</title>
+    <!-- partial stylesheet -->
+    <%include ../partials/_stylesheet.ejs%>
+    <style>
+      .modal {
+      display: block !important;
+      z-index: 9999 !important;
+      backdrop-filter: blur(14px) grayscale(0.6) opacity(12);
+    }
+    </style>
+
+</head>
+
+<body ng-app="manageUsers" ng-controller="manageUsersController" ng-init="init()">
+    <div class="container-scroller">
+        <!-- partial navbar-->
+        <%include ../partials/_navbar.ejs%>
+            <!-- page-body-wrapper ends -->
+            <div class="container-fluid page-body-wrapper">
+                <!-- partial sidebar-->
+                <%include ../partials/_sidebar.ejs%>
+                    <!-- main-panel starts -->
+                    <div class="main-panel">         
+                        <div class="card">
+                            <div class="row">
+                                <div class="col text-right addusercol">
+                                  <a class="adduser nav-link" ng-click="openModal('create')">Add User</a>
+                                  <!-- <button class="btn btn-primary" ng-click="openModal('create')">Add User</button> -->
+                                </div>
+                              </div>
+                            <div class="card-body">
+                              <h4 class="card-title">Users Data</h4>
+                              <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr ng-repeat="user in users track by $index">  
+                                    <th>{{$index + 1}}</th>
+                                    <td>{{user.firstName}}</td>
+                                    <td>{{user.lastName}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.contact}}</td>
+                                    <td>
+                                      <button class="btn btn-warning text-white pl-3 pr-3" ng-click="openModal('edit', user, $index)"><i class="icon-note"></i> </button>
+                                      <button class="btn btn-danger text-white pl-3 pr-3" ng-click="delete(user._id, $index)"><i class="icon-trash"></i></button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+  
+                        <!-- partial footer-->
+
+                    </div>
+                    <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <% include ./modal.ejs %>
+    <%include ../partials/_js.ejs%>
+    <script src="/ng-apps/manageUsers_ng.js"></script>
+</body>
+
+</html>
